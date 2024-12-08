@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from "@nestjs/common";
 import { CreateCostumerDto } from './domain/dto/create-costumer.dto';
 import { UpdateCostumerDto } from './domain/dto/update-costumer.dto';
+import { ClearAllSelectedCostumersUseCase } from "./use-cases/clear-all-selected-costumers";
 import { CreateCostumerUseCase } from "./use-cases/create-costumer";
 import { DeleteCostumerUseCase } from "./use-cases/delete-costumer";
 import { FindAllCostumersUseCase } from "./use-cases/find-all-costumers";
@@ -17,11 +18,17 @@ export class CostumerController {
     private readonly deleteCostumerUseCase: DeleteCostumerUseCase,
     private readonly updatedCostumerUseCase: UpdatedCostumerUseCase,
     private readonly selectCostumerUseCase: SelectCostumerUseCase,
+    private readonly clearAllSelectedCostumersUseCase: ClearAllSelectedCostumersUseCase,
   ) {}
 
   @Post()
   create(@Body() createCostumerDto: CreateCostumerDto) {
     return this.createCostumerUseCase.execute(createCostumerDto);
+  }
+  
+  @Post("/clear")
+  clearSelectStatus() {
+    return this.clearAllSelectedCostumersUseCase.execute();
   }
   
   @Post(":id")
@@ -31,7 +38,7 @@ export class CostumerController {
   ) {
     return this.selectCostumerUseCase.execute(id, select);
   }
-
+  
   @Get()
   findAll() {
     return this.findAllCostumersUseCase.execute();
