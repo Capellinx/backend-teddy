@@ -3,6 +3,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { AdminController } from './admin.controller';
 import { Admin } from "./domain/entities/admin.entity";
 import { CreateAdminUseCase } from "./use-cases/create-admin";
+import { FindByNameUseCase } from "./use-cases/find-by-name";
 
 @Module({
   imports: [
@@ -10,7 +11,8 @@ import { CreateAdminUseCase } from "./use-cases/create-admin";
   ],
   controllers: [AdminController],
   providers: [
-    CreateAdminUseCase
+    CreateAdminUseCase,
+    FindByNameUseCase
   ],
 })
 export class AdminModule {}
