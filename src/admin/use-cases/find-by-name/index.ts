@@ -11,11 +11,9 @@ export class FindByNameUseCase {
   ) {}
   
   async execute(name: string): Promise<Admin> {
-    const isExistUserAdmin = await this.adminRepository.findOne({
-      where: {
-        name
-      }
-    })
+    const isExistUserAdmin = await this.adminRepository.findOneOrFail({
+      where: { name },
+    });
     
     if(!isExistUserAdmin) {
       throw new BadRequestException('Admin does not exist')
