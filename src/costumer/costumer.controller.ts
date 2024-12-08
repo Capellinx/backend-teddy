@@ -27,7 +27,7 @@ export class CostumerController {
   @Post(":id")
   selectCostumer(
     @Param('id') id: string,
-    @Query("select") select: boolean
+    @Query("select") select: string
   ) {
     return this.selectCostumerUseCase.execute(id, select);
   }

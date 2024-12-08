@@ -12,7 +12,7 @@ export class SelectCostumerUseCase {
     private costumerRepository: Repository<Costumer>,
   ) {}
   
-  async execute(id: string, select: boolean): Promise<void> {
+  async execute(id: string, select: string): Promise<void> {
     const isAlreadyExistCostumer = await this.costumerRepository.findOne({
       where: {
         id
@@ -23,18 +23,17 @@ export class SelectCostumerUseCase {
       throw new NotFoundException("Costumer not found");
     }
     
-    if(select == true) {
+    if(select == "false") {
       await this.costumerRepository.update(id, {
-        is_selected: true
+        is_selected: false,
       })
       
       return;
     }
     
     await this.costumerRepository.update(id, {
-      is_selected: false,
+      is_selected: true
     })
-    
     return
   }
 }
