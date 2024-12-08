@@ -20,6 +20,9 @@ export class Costumer {
 
   @Column({ type: "integer" })
   company: number;
+  
+  @Column({ type: "boolean" })
+  is_selected: boolean;
 
   @Column({ type: "timestamp" })
   created_at: Date;
