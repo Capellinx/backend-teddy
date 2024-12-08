@@ -1,5 +1,16 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from "@nestjs/common";
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+  UseGuards
+} from "@nestjs/common";
 import { ApiParam, ApiQuery, ApiResponse } from "@nestjs/swagger";
+import { AuthGuard } from "../auth/auth.guard";
 import { CreateCostumerDto } from './domain/dto/create-costumer.dto';
 import { FindCostumerDto } from "./domain/dto/find-costumer.dto";
 import { UpdateCostumerDto } from './domain/dto/update-costumer.dto';
@@ -12,6 +23,7 @@ import { SelectCostumerUseCase } from "./use-cases/select-costumer";
 import { UpdatedCostumerUseCase } from "./use-cases/update-costumer";
 
 @Controller('costumer')
+@UseGuards(AuthGuard)
 export class CostumerController {
   constructor(
     private readonly createCostumerUseCase: CreateCostumerUseCase,
