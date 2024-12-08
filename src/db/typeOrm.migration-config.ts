@@ -1,6 +1,6 @@
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { DataSource } from "typeorm";
-import { Costumer } from "../costumer/entities/costumer.entity";
+import { Costumer } from "../costumer/domain/entities/costumer.entity";
 import { Env, envSchema } from "../env";
 
 ConfigModule.forRoot({

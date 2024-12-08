@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { Costumer } from "../costumer/entities/costumer.entity";
+import { Costumer } from "../costumer/domain/entities/costumer.entity";
 import { Env } from "../env";
 
 @Module({
