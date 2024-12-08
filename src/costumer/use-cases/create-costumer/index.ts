@@ -25,7 +25,13 @@ export class CreateCostumerUseCase {
       throw new BadRequestException("Costumer already exists");
     }
     
-    await this.costumerRepository.save(costumer);
+    const newCostumer = new Costumer({
+      name: costumer.name,
+      salary: costumer.salary,
+      company: costumer.company,
+    })
+    
+    await this.costumerRepository.save(newCostumer);
     
     return
   }
