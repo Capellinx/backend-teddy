@@ -13,8 +13,8 @@ export class CreateAdminUseCase {
   ) {}
 
   async execute(admin: CreateAdminDto): Promise<void> {
-    if (!admin || !admin.password) {
-      throw new BadRequestException('Password is required');
+    if (!admin.name || !admin.password) {
+      throw new BadRequestException('Fields is required');
     }
     
     const newAdmin = new Admin({
