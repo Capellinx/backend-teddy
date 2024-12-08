@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { Admin } from "../admin/domain/entities/admin.entity";
 import { Costumer } from "../costumer/domain/entities/costumer.entity";
 import { Env } from "../env";
 
@@ -13,7 +14,7 @@ import { Env } from "../env";
       username: config.get<string>("DB_USERNAME", {infer: true}),
       password: config.get<string>("DB_PASSWORD", {infer: true}),
       database: config.get<string>("DB_NAME", {infer: true}),
-      entities: [Costumer],
+      entities: [Costumer, Admin],
       migrations: [__dirname + "/migrations/*.ts"],
       synchronize: false
     }),

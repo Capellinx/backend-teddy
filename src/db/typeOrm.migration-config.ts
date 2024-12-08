@@ -1,5 +1,6 @@
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { DataSource } from "typeorm";
+import { Admin } from "../admin/domain/entities/admin.entity";
 import { Costumer } from "../costumer/domain/entities/costumer.entity";
 import { Env, envSchema } from "../env";
 
@@ -17,7 +18,7 @@ const dataSourceOptions = new DataSource({
   username: configService.get<string>("DB_USERNAME", {infer: true}),
   password: configService.get<string>("DB_PASSWORD", {infer: true}),
   database: configService.get<string>("DB_NAME", {infer: true}),
-  entities: [Costumer],
+  entities: [Costumer, Admin],
   migrations: [__dirname + "/migrations/*.ts"],
   synchronize: false,
 });
