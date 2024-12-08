@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { CostumerController } from './costumer.controller';
 import { Costumer } from "./domain/entities/costumer.entity";
+import { ClearAllSelectedCostumersUseCase } from "./use-cases/clear-all-selected-costumers";
 import { CreateCostumerUseCase } from "./use-cases/create-costumer";
 import { DeleteCostumerUseCase } from "./use-cases/delete-costumer";
 import { FindAllCostumersUseCase } from "./use-cases/find-all-costumers";
@@ -20,7 +21,8 @@ import { UpdatedCostumerUseCase } from "./use-cases/update-costumer";
     FindAllCostumersUseCase,
     DeleteCostumerUseCase,
     UpdatedCostumerUseCase,
-    SelectCostumerUseCase
+    SelectCostumerUseCase,
+    ClearAllSelectedCostumersUseCase
   ],
 })
 export class CostumerModule {}
