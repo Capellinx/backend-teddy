@@ -5,8 +5,6 @@ interface ICostumerProps {
   name: string;
   salary: number;
   company: number;
-  created_at: string;
-  updated_at: string;
 }
 
 @Entity({ name: "costumers" })
