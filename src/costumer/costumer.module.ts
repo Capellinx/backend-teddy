@@ -6,6 +6,7 @@ import { CreateCostumerUseCase } from "./use-cases/create-costumer";
 import { DeleteCostumerUseCase } from "./use-cases/delete-costumer";
 import { FindAllCostumersUseCase } from "./use-cases/find-all-costumers";
 import { FindOneCostumerUseCase } from "./use-cases/find-one-costumer";
+import { SelectCostumerUseCase } from "./use-cases/select-costumer";
 import { UpdatedCostumerUseCase } from "./use-cases/update-costumer";
 
 @Module({
@@ -19,6 +20,7 @@ import { UpdatedCostumerUseCase } from "./use-cases/update-costumer";
     FindAllCostumersUseCase,
     DeleteCostumerUseCase,
     UpdatedCostumerUseCase,
+    SelectCostumerUseCase
   ],
 })
 export class CostumerModule {}
