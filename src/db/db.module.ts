@@ -16,6 +16,9 @@ import { Env } from "../env";
       database: config.get<string>("DB_NAME", {infer: true}),
       entities: [Costumer, Admin],
       migrations: [__dirname + "/migrations/*.ts"],
+      ssl: {
+        rejectUnauthorized: false,
+      },
       synchronize: false
     }),
     inject: [ConfigService],
