@@ -1,5 +1,10 @@
 import { Controller, Post, Body, Get, Query } from "@nestjs/common";
+import { ApiBody, ApiResponse } from "@nestjs/swagger";
+import { number, string } from "zod";
 import { CreateAdminDto } from './domain/dto/create-admin.dto';
+import { FindNameDto } from "./domain/dto/find-name.dto";
+import { LoginAdminDto } from "./domain/dto/login-admin.dto";
+import { LoginResponseDto } from "./domain/dto/login-response.dto";
 import { Admin } from "./domain/entities/admin.entity";
 import { CreateAdminUseCase } from "./use-cases/create-admin";
 import { FindByNameUseCase } from "./use-cases/find-by-name";
@@ -19,6 +24,15 @@ export class AdminController {
   }
   
   @Get()
+  @ApiResponse({
+    status: 200,
+    description: 'Administrador encontrado com sucesso.',
+    type: FindNameDto,
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'administrador não encontrado.',
+  })
   findByName(
     @Query("name") name: string,
   ) {
@@ -26,9 +40,17 @@ export class AdminController {
   }
   
   @Post("login")
+  @ApiResponse({
+    status: 200,
+    description: 'Login realizado com sucesso.',
+    type: LoginResponseDto,
+  })
+  @ApiResponse({
+    status: 401,
+    description: 'Credenciais inválidas.',
+  })
   signIn(
-    @Body("username") username: string,
-    @Body("password") password: string,
+    @Body() {username, password}: LoginAdminDto,
   ) {
     return this.loginAdminUseCase.execute(username, password);
   }
