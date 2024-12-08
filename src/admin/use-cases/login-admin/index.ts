@@ -20,7 +20,7 @@ export class LoginAdminUseCase {
     ))
   }
   
-  async execute(username: string, password: string): Promise<{token: string, expiresIn: number}> {
+  async execute(username: string, password: string): Promise<{token: string, expiresIn: number, name: string}> {
     const isExistAdmin = await this.findByNameUseCase.execute(username);
     
     if (!isExistAdmin) {
@@ -46,6 +46,7 @@ export class LoginAdminUseCase {
     return {
       token: newToekn,
       expiresIn: this.jwtExpirationTimeInSeconds,
+      name: isExistAdmin.name,
     };
   }
 }
