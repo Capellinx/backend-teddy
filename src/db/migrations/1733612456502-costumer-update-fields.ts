@@ -11,7 +11,6 @@ export class CostumerUpdateFields1733612456502 implements MigrationInterface {
     }
     
     public async down(queryRunner: QueryRunner): Promise<void> {
-        // Remove as colunas created_at e updated_at
         await queryRunner.query(`
             ALTER TABLE costumers
             DROP COLUMN IF EXISTS created_at,
