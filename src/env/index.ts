@@ -7,6 +7,8 @@ export const envSchema = z.object({
   DB_USERNAME: z.string(),
   DB_PASSWORD: z.string(),
   DB_NAME: z.string(),
+  JWT_SECRET: z.string(),
+  JWT_EXPIRATION_TIME: z.string(),
 })
 
 export type Env = z.infer<typeof envSchema>
