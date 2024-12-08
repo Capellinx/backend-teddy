@@ -4,7 +4,6 @@ import { envSchema } from "./env";
 import { DbModule } from './db/db.module';
 import { CostumerModule } from './costumer/costumer.module';
 import { AdminModule } from './admin/admin.module';
-import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -15,7 +14,6 @@ import { AuthModule } from './auth/auth.module';
     DbModule,
     CostumerModule,
     AdminModule,
-    AuthModule,
   ],
   controllers: [],
   providers: [],
