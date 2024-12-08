@@ -1,9 +1,12 @@
-import { PartialType } from '@nestjs/mapped-types';
+import { ApiProperty } from '@nestjs/swagger';
 
-class _UpdatedCostumerDto {
-  name: string;
-  salary: number;
-  company: number;
+export class UpdateCostumerDto {
+  @ApiProperty({ required: false })
+  name?: string;
+  
+  @ApiProperty({ required: false })
+  salary?: number;
+  
+  @ApiProperty({ required: false })
+  company?: number;
 }
-
-export class UpdateCostumerDto extends PartialType(_UpdatedCostumerDto) {}
