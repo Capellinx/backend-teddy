@@ -58,6 +58,16 @@ $ pnpm run start
 $ pnpm run start:dev
 ```
 
+### 6. Visualizar swagger
+
+O swagger irá rodar no seu navegador com o endpoint "/api". </br>
+
+Se sua aplicação estiver rodando na localhost:3000 então você irá acessar localhost:3000/api
+
+```url
+http://localhost:porta/api
+```
+
 ### Contato
 Se você tiver alguma dúvida ou sugestão, entre em contato comigo:
 
