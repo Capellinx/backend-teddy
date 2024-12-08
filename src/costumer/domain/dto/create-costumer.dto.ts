@@ -5,5 +5,4 @@ export class CreateCostumerDto {
   
   is_selected?: boolean;
   created_at?: Date | null;
-  updated_at?: Date | null;
 }

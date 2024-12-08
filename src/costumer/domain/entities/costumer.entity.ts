@@ -27,9 +27,6 @@ export class Costumer {
   @Column({ type: "timestamp" })
   created_at: Date;
 
-  @Column({ type: "timestamp" })
-  updated_at: Date;
-
   constructor(props: ICostumerProps, id?: string) {
     this.id = id ?? randomUUID();
     Object.assign(this, props);
