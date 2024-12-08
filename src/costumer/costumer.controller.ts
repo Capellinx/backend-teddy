@@ -1,6 +1,5 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from "@nestjs/common";
 import { ApiParam, ApiQuery, ApiResponse } from "@nestjs/swagger";
-import { LoginResponseDto } from "../admin/domain/dto/login-response.dto";
 import { CreateCostumerDto } from './domain/dto/create-costumer.dto';
 import { FindCostumerDto } from "./domain/dto/find-costumer.dto";
 import { UpdateCostumerDto } from './domain/dto/update-costumer.dto';
@@ -64,17 +63,16 @@ export class CostumerController {
   }
   
   @Get()
-  @ApiResponse({
-    status: 200,
-    description: 'Login successfully.',
-    type: [FindCostumerDto],
-  })
-  @ApiResponse({
-    status: 401,
-    description: 'Credentials invalid.',
-  })
-  findAll() {
-    return this.findAllCostumersUseCase.execute();
+  @ApiQuery({ name: "page", required: false })
+  @ApiQuery({ name: "limit", required: false })
+  findAll(
+    @Query("page") page = 1,
+    @Query("limit") limit = 12,
+  ) {
+    return this.findAllCostumersUseCase.execute({
+      page,
+      limit,
+    });
   }
   
   @Get(':id')
