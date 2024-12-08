@@ -1,8 +1,8 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { CreateCostumerDto } from "../../dto/create-costumer.dto";
-import { Costumer } from "../../entities/costumer.entity";
+import { CreateCostumerDto } from "../../domain/dto/create-costumer.dto";
+import { Costumer } from "../../domain/entities/costumer.entity";
 
 @Injectable()
 export class CreateCostumerUseCase {
